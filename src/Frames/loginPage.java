@@ -64,11 +64,12 @@ public class loginPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Search Car");
         setLocation(new java.awt.Point(500, 200));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(95, 166, 190));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Joen\\Documents\\NetBeansProjects\\carApplication\\rsz_login_picture.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_login_picture.png"))); // NOI18N
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField1.setText("Username...");
@@ -76,7 +77,6 @@ public class loginPage extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Login");
         jButton1.setToolTipText("");
         jButton1.setPreferredSize(new java.awt.Dimension(85, 25));
