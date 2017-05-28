@@ -6,29 +6,37 @@
 package Frames;
 
 import classes.User;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import run.Sqlite;
 
 /**
  *
  * @author Joen
  */
-public class FirstPage extends javax.swing.JFrame {
+public final class FirstPage extends javax.swing.JFrame {
 
-    classes.User newUser = new User("Joen", 0);
+    classes.User newUser = new User("", 0);
 
     /**
      * Creates new form firstPage
+     *
+     * @param user1
      */
-    public FirstPage(classes.User newUserIn) {
-        newUser = newUserIn;
+    public FirstPage(User user1) {
+        newUser = user1;
         initComponents();
         doThisAtStart();
+    }
+
+    private void doThisAtStart() {
+        helloLable.setText("Hello, " + newUser.getName());
     }
 
     /**
@@ -137,6 +145,11 @@ public class FirstPage extends javax.swing.JFrame {
 
         jMenuItem1.setBackground(new java.awt.Color(204, 204, 204));
         jMenuItem1.setText("Options");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -150,7 +163,7 @@ public class FirstPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //SQL query
+        //SQL query       
         Connection conn = null;
         try {
             conn = (new Sqlite().connect());
@@ -163,9 +176,7 @@ public class FirstPage extends javax.swing.JFrame {
                 System.out.println(rs.getString(2));
             }
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -177,9 +188,11 @@ public class FirstPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void doThisAtStart() {
-        helloLable.setText("Hello, " + newUser.getName());
-    }
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        //Options Menu
+        JFrame frame2 = new OptionsMenu(newUser);
+        frame2.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,15 +224,13 @@ public class FirstPage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FirstPage(new User("", 0)).setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FirstPage(new User("", 0)).setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel helloLable;
+    public javax.swing.JLabel helloLable;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -227,7 +238,7 @@ public class FirstPage extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel jPanel1;
     public javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 

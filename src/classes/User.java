@@ -34,7 +34,7 @@ public class User {
         return this.name;
     }
     
-    int getId(){
+    public int getId(){
         return this.user_id;
     }
 }
