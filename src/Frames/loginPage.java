@@ -27,7 +27,8 @@ import run.Sqlite;
  * @author Joen
  */
 public class loginPage extends javax.swing.JFrame {
-
+    
+    public static JFrame FRAME2;
     static JFrame frame = new loginPage();
     User newUser;
 
@@ -174,8 +175,8 @@ public class loginPage extends javax.swing.JFrame {
                     if (checkPassword.equals(password)) {
                         User user1 = new User(rs.getString(4), rs.getInt(1));
                         frame.dispose();
-                        JFrame frame2 = new FirstPage(user1);
-                        frame2.setVisible(true);
+                        FRAME2 = new FirstPage(user1);
+                        FRAME2.setVisible(true);
                         return;
                     }
                 }
