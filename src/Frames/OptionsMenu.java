@@ -5,7 +5,9 @@
  */
 package Frames;
 
+import static Frames.newUserFrame.frame;
 import classes.User;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,12 +51,14 @@ public class OptionsMenu extends javax.swing.JFrame {
         jRadioGrey = new javax.swing.JRadioButton();
         jRadioBlue = new javax.swing.JRadioButton();
         jRadioRed = new javax.swing.JRadioButton();
+        applyButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(143, 166, 190));
+        setLocation(new java.awt.Point(500, 200));
 
         jPanel1.setBackground(new java.awt.Color(95, 166, 190));
 
@@ -64,6 +68,11 @@ public class OptionsMenu extends javax.swing.JFrame {
         jRadioGrey.setBackground(new java.awt.Color(95, 166, 190));
         buttonGroup1.add(jRadioGrey);
         jRadioGrey.setText("Grey");
+        jRadioGrey.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioGreyActionPerformed(evt);
+            }
+        });
 
         jRadioBlue.setBackground(new java.awt.Color(95, 166, 190));
         buttonGroup1.add(jRadioBlue);
@@ -77,6 +86,18 @@ public class OptionsMenu extends javax.swing.JFrame {
         jRadioRed.setBackground(new java.awt.Color(95, 166, 190));
         buttonGroup1.add(jRadioRed);
         jRadioRed.setText("Red");
+        jRadioRed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioRedActionPerformed(evt);
+            }
+        });
+
+        applyButton.setText("Apply");
+        applyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                applyButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -93,7 +114,10 @@ public class OptionsMenu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jRadioGrey)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioRed)))
+                        .addComponent(jRadioRed))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(applyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(120, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -106,7 +130,9 @@ public class OptionsMenu extends javax.swing.JFrame {
                     .addComponent(jRadioBlue)
                     .addComponent(jRadioGrey)
                     .addComponent(jRadioRed))
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(applyButton)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(204, 204, 204));
@@ -136,8 +162,35 @@ public class OptionsMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioBlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioBlueActionPerformed
-        // TODO add your handling code here:
+        jPanel1.setBackground(new Color(95, 166, 190));
+        jRadioBlue.setBackground(new Color(95, 166, 190));
+        jRadioRed.setBackground(new Color(95, 166, 190));
+        jRadioGrey.setBackground(new Color(95, 166, 190));
     }//GEN-LAST:event_jRadioBlueActionPerformed
+
+    private void jRadioGreyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioGreyActionPerformed
+        jPanel1.setBackground(Color.gray);
+        jRadioGrey.setBackground(Color.GRAY);
+        jRadioRed.setBackground(Color.GRAY);
+        jRadioBlue.setBackground(Color.GRAY);
+    }//GEN-LAST:event_jRadioGreyActionPerformed
+
+    private void jRadioRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioRedActionPerformed
+        jPanel1.setBackground(Color.RED);
+        jRadioRed.setBackground(Color.red);
+        jRadioGrey.setBackground(Color.red);
+        jRadioBlue.setBackground(Color.red);
+    }//GEN-LAST:event_jRadioRedActionPerformed
+
+    private void applyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyButtonActionPerformed
+        if (jRadioRed.isSelected()) {
+            updateToDatabase("Red");
+        } else if (jRadioBlue.isSelected()) {
+            updateToDatabase("Blue");
+        } else if (jRadioGrey.isSelected()) {
+            updateToDatabase("Grey");
+        }
+    }//GEN-LAST:event_applyButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,6 +228,7 @@ public class OptionsMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton applyButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
@@ -196,43 +250,86 @@ public class OptionsMenu extends javax.swing.JFrame {
 
             while (rs.next()) {
                 color = rs.getString(3);
-                System.out.println("This is color: " + color);
             }
+            conn.close();
+            rs.close();
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //if not found
         if (color.equals("")) {
-
-            try {
-                conn = (new Sqlite().connect());
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(newUserFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            String sql = "insert into options(user_id, color) values(?,?)";
-            PreparedStatement state = null;
-            try {
-                System.out.println("Doing this.");
-                state = conn.prepareStatement(sql);
-                state.setInt(1, newUser.getId());
-                state.setString(2, "Blue");
-
-                frame.dispose();
-                state.execute();
-
-                state.close();
-                conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(newUserFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else if (color.equals("Blue")) {
-            System.out.println("True");
             jRadioBlue.setSelected(true);
+            jPanel1.setBackground(new Color(95, 166, 190));
+            jRadioBlue.setBackground(new Color(95, 166, 190));
+            jRadioRed.setBackground(new Color(95, 166, 190));
+            jRadioGrey.setBackground(new Color(95, 166, 190));
+            addToDatabase("Blue");
+        } else if (color.equals("Blue")) {
+            jRadioBlue.setSelected(true);
+            jPanel1.setBackground(new Color(95, 166, 190));
+            jRadioBlue.setBackground(new Color(95, 166, 190));
+            jRadioRed.setBackground(new Color(95, 166, 190));
+            jRadioGrey.setBackground(new Color(95, 166, 190));
         } else if (color.equals("Grey")) {
             jRadioGrey.setSelected(true);
+            jPanel1.setBackground(Color.gray);
+            jRadioGrey.setBackground(Color.GRAY);
+            jRadioRed.setBackground(Color.GRAY);
+            jRadioBlue.setBackground(Color.GRAY);
         } else if (color.equals("Red")) {
             jRadioRed.setSelected(true);
+            jPanel1.setBackground(Color.RED);
+            jRadioRed.setBackground(Color.red);
+            jRadioGrey.setBackground(Color.red);
+            jRadioBlue.setBackground(Color.red);
+        }
+    }
+
+    private void addToDatabase(String newColor) {
+        Connection conn = null;
+        try {
+            conn = (new Sqlite().connect());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(newUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String sql = "insert into options(user_id, color) values(?,?)";
+        PreparedStatement state = null;
+        try {
+            state = conn.prepareStatement(sql);
+            state.setInt(1, newUser.getId());
+            state.setString(2, "Blue");
+
+            state.execute();
+
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(newUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void updateToDatabase(String newColor) {
+        Connection conn = null;
+        try {
+            conn = (new Sqlite().connect());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(newUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String sql = "UPDATE options SET color=? WHERE user_id=" + newUser.getId();
+        PreparedStatement state = null;
+        try {
+            state = conn.prepareStatement(sql);
+            state.setString(1, newColor);
+
+            state.execute();
+
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(newUserFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

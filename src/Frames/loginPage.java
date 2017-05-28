@@ -177,6 +177,7 @@ public class loginPage extends javax.swing.JFrame {
                         frame.dispose();
                         FRAME2 = new FirstPage(user1);
                         FRAME2.setVisible(true);
+                        connectLogin.close();
                         return;
                     }
                 }

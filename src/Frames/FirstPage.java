@@ -175,7 +175,7 @@ public final class FirstPage extends javax.swing.JFrame {
                 System.out.print(rs.getInt(1));
                 System.out.println(rs.getString(2));
             }
-
+            conn.close();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -192,6 +192,7 @@ public final class FirstPage extends javax.swing.JFrame {
         //Options Menu
         JFrame frame2 = new OptionsMenu(newUser);
         frame2.setVisible(true);
+        loginPage.FRAME2.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
