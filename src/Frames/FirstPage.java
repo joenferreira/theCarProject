@@ -21,7 +21,7 @@ import run.Sqlite;
  * @author Joen
  */
 public final class FirstPage extends javax.swing.JFrame {
-
+    
     classes.User newUser = new User("", 0);
 
     /**
@@ -37,6 +37,8 @@ public final class FirstPage extends javax.swing.JFrame {
 
     private void doThisAtStart() {
         helloLable.setText("Hello, " + newUser.getName());
+
+        checkBackgroundColor();
     }
 
     /**
@@ -242,5 +244,38 @@ public final class FirstPage extends javax.swing.JFrame {
     public javax.swing.JPanel jPanel1;
     public javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    private void checkBackgroundColor() {
+        
+        String color = "";
+        Connection conn = null;
+        try {
+            conn = (new Sqlite().connect());
+
+            String SQL = "Select * from options WHERE user_id =" + newUser.getId();
+            ResultSet rs = conn.createStatement().executeQuery(SQL);
+
+            while (rs.next()) {
+                color = rs.getString(3);
+            }
+            conn.close();
+            rs.close();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if(color.equals("Blue")){
+            jPanel1.setBackground(new Color(90, 166, 190));
+        }
+        else if(color.equals("Grey")){
+            jPanel1.setBackground(Color.gray);
+        }
+        else if(color.equals("Red")){
+            jPanel1.setBackground(Color.red);
+        }
+        else jPanel1.setBackground(new Color(90, 166, 190));
+    }
+    
 
 }
