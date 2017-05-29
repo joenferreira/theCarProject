@@ -21,7 +21,7 @@ import run.Sqlite;
  * @author Joen
  */
 public final class FirstPage extends javax.swing.JFrame {
-    
+
     public static JFrame FRAME2;
     classes.User newUser = new User("", 0);
 
@@ -195,7 +195,10 @@ public final class FirstPage extends javax.swing.JFrame {
         //Options Menu
         FRAME2 = new OptionsMenu(newUser);
         FRAME2.setVisible(true);
-        loginPage.FRAME2.dispose();
+        if (loginPage.FRAME2.isActive()) {
+            System.out.println("It's active.");
+            loginPage.FRAME2.dispose();
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
@@ -247,7 +250,7 @@ public final class FirstPage extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void checkBackgroundColor() {
-        
+
         String color = "";
         Connection conn = null;
         try {
@@ -265,18 +268,16 @@ public final class FirstPage extends javax.swing.JFrame {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        if(color.equals("Blue")){
+
+        if (color.equals("Blue")) {
+            jPanel1.setBackground(new Color(90, 166, 190));
+        } else if (color.equals("Grey")) {
+            jPanel1.setBackground(Color.gray);
+        } else if (color.equals("Red")) {
+            jPanel1.setBackground(Color.red);
+        } else {
             jPanel1.setBackground(new Color(90, 166, 190));
         }
-        else if(color.equals("Grey")){
-            jPanel1.setBackground(Color.gray);
-        }
-        else if(color.equals("Red")){
-            jPanel1.setBackground(Color.red);
-        }
-        else jPanel1.setBackground(new Color(90, 166, 190));
     }
-    
 
 }
