@@ -65,7 +65,7 @@ public class loginPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Car Search");
-        setLocation(new java.awt.Point(500, 200));
+        setLocation(new java.awt.Point(600, 300));
         setMaximumSize(new java.awt.Dimension(460, 320));
         setMinimumSize(new java.awt.Dimension(460, 320));
         setPreferredSize(new java.awt.Dimension(460, 320));

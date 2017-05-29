@@ -56,7 +56,7 @@ public class newUserFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setLocation(new java.awt.Point(500, 200));
+        setLocation(new java.awt.Point(600, 300));
         setMinimumSize(new java.awt.Dimension(360, 320));
         setPreferredSize(new java.awt.Dimension(460, 250));
         setResizable(false);
