@@ -5,7 +5,6 @@
  */
 package Frames;
 
-import static Frames.newUserFrame.frame;
 import classes.User;
 import java.awt.Color;
 import java.sql.Connection;
@@ -29,6 +28,7 @@ public class OptionsMenu extends javax.swing.JFrame {
 
     /**
      * Creates new form OptionsMenu
+     * @param newUserIn
      */
     public OptionsMenu(classes.User newUserIn) {
         newUser = newUserIn;
@@ -168,17 +168,14 @@ public class OptionsMenu extends javax.swing.JFrame {
 
     private void jRadioBlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioBlueActionPerformed
         blueBackground();
-        goBackMainMenu();
     }//GEN-LAST:event_jRadioBlueActionPerformed
 
     private void jRadioGreyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioGreyActionPerformed
         greyBackground();
-        goBackMainMenu();
     }//GEN-LAST:event_jRadioGreyActionPerformed
 
     private void jRadioRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioRedActionPerformed
         redBackground();
-        goBackMainMenu();
     }//GEN-LAST:event_jRadioRedActionPerformed
 
     private void applyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyButtonActionPerformed
@@ -190,6 +187,7 @@ public class OptionsMenu extends javax.swing.JFrame {
         } else if (jRadioGrey.isSelected()) {
             updateToDatabase("Grey");
         }
+        goBackMainMenu();
     }//GEN-LAST:event_applyButtonActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -224,10 +222,8 @@ public class OptionsMenu extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new OptionsMenu(new User("", 0)).setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new OptionsMenu(new User("", 0)).setVisible(true);
         });
     }
 
@@ -250,31 +246,37 @@ public class OptionsMenu extends javax.swing.JFrame {
             conn = (new Sqlite().connect());
 
             String SQL = "Select * from options WHERE user_id =" + newUser.getId();
-            ResultSet rs = conn.createStatement().executeQuery(SQL);
-
-            while (rs.next()) {
-                color = rs.getString(3);
+            try (ResultSet rs = conn.createStatement().executeQuery(SQL)) {
+                while (rs.next()) {
+                    color = rs.getString(3);
+                }
+                conn.close();
             }
-            conn.close();
-            rs.close();
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
         }
         //if not found
-        if (color.equals("")) {
-            jRadioBlue.setSelected(true);
-            blueBackground();
-            addToDatabase("Blue");
-        } else if (color.equals("Blue")) {
-            jRadioBlue.setSelected(true);
-            blueBackground();
-        } else if (color.equals("Grey")) {
-            jRadioGrey.setSelected(true);
-            greyBackground();
-        } else if (color.equals("Red")) {
-            jRadioRed.setSelected(true);
-            redBackground();
+        switch (color) {
+            case "":
+                jRadioBlue.setSelected(true);
+                blueBackground();
+                addToDatabase("Blue");
+                break;
+            case "Blue":
+                jRadioBlue.setSelected(true);
+                blueBackground();
+                break;
+            case "Grey":
+                jRadioGrey.setSelected(true);
+                greyBackground();
+                break;
+            case "Red":
+                jRadioRed.setSelected(true);
+                redBackground();
+                break;
+            default:
+                break;
         }
     }
 

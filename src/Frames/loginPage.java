@@ -27,18 +27,14 @@ import run.Sqlite;
  * @author Joen
  */
 public class loginPage extends javax.swing.JFrame {
-    
+
     public static JFrame FRAME2;
     static JFrame frame = new loginPage();
     User newUser;
 
-    public static void run() {
-        frame.setVisible(true);
-    }
-
     /**
      * Creates new form loginPage
-     * @param newUserIn
+     *
      */
     public loginPage() {
         initComponents();
@@ -174,9 +170,9 @@ public class loginPage extends javax.swing.JFrame {
                     String checkPassword = rs.getString(3);
                     if (checkPassword.equals(password)) {
                         User user1 = new User(rs.getString(4), rs.getInt(1));
-                        frame.dispose();
                         FRAME2 = new FirstPage(user1);
                         FRAME2.setVisible(true);
+                        disposeThisFrame();
                         connectLogin.close();
                         return;
                     }
@@ -221,10 +217,8 @@ public class loginPage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new loginPage().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new loginPage().setVisible(true);
         });
     }
 
@@ -280,5 +274,15 @@ public class loginPage extends javax.swing.JFrame {
                 "Wrong username/password.",
                 "Input Error",
                 JOptionPane.ERROR_MESSAGE);
+    }
+
+    private void disposeThisFrame() {
+        if (frame.isActive()) {
+            frame.dispose();
+        } else if (run.Run.FRAME2.isActive()) {
+            run.Run.FRAME2.dispose();
+        } else if (FirstPage.FRAME2.isActive()) {
+            FirstPage.FRAME2.dispose();
+        }
     }
 }

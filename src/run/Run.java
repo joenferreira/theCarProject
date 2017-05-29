@@ -1,5 +1,6 @@
 package run;
 
+import Frames.loginPage;
 import java.sql.Connection;
 import javax.swing.JFrame;
 
@@ -14,9 +15,12 @@ import javax.swing.JFrame;
  */
 public class Run {
 
+    public static JFrame FRAME2;
+    
     public static void main(String[] args) throws ClassNotFoundException {
 
-        Frames.loginPage.run();
+        FRAME2 = new loginPage();
+        FRAME2.setVisible(true);
 
         //initialize database, creates new if it does not exist
         Connection conn = null;

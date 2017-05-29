@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 import run.Sqlite;
 
 /**
@@ -38,7 +37,6 @@ public final class FirstPage extends javax.swing.JFrame {
 
     private void doThisAtStart() {
         helloLable.setText("Hello, " + newUser.getName());
-
         checkBackgroundColor();
     }
 
@@ -51,6 +49,7 @@ public final class FirstPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -61,6 +60,10 @@ public final class FirstPage extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem3logout = new javax.swing.JMenuItem();
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Car Search");
@@ -160,6 +163,18 @@ public final class FirstPage extends javax.swing.JFrame {
         jMenu2.setText("Saved Cars");
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("User");
+
+        jMenuItem3logout.setText("Logout");
+        jMenuItem3logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3logoutActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3logout);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -195,11 +210,14 @@ public final class FirstPage extends javax.swing.JFrame {
         //Options Menu
         FRAME2 = new OptionsMenu(newUser);
         FRAME2.setVisible(true);
-        if (loginPage.FRAME2.isActive()) {
-            System.out.println("It's active.");
-            loginPage.FRAME2.dispose();
-        }
+        disposeThisWindow();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3logoutActionPerformed
+        FRAME2 = new loginPage();
+        FRAME2.setVisible(true);
+        disposeThisWindow();
+    }//GEN-LAST:event_jMenuItem3logoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,8 +261,11 @@ public final class FirstPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3logout;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
@@ -257,27 +278,38 @@ public final class FirstPage extends javax.swing.JFrame {
             conn = (new Sqlite().connect());
 
             String SQL = "Select * from options WHERE user_id =" + newUser.getId();
-            ResultSet rs = conn.createStatement().executeQuery(SQL);
-
-            while (rs.next()) {
-                color = rs.getString(3);
+            try (ResultSet rs = conn.createStatement().executeQuery(SQL)) {
+                while (rs.next()) {
+                    color = rs.getString(3);
+                }
+                conn.close();
             }
-            conn.close();
-            rs.close();
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (color.equals("Blue")) {
-            jPanel1.setBackground(new Color(90, 166, 190));
-        } else if (color.equals("Grey")) {
-            jPanel1.setBackground(Color.gray);
-        } else if (color.equals("Red")) {
-            jPanel1.setBackground(Color.red);
-        } else {
-            jPanel1.setBackground(new Color(90, 166, 190));
+        switch (color) {
+            case "Blue":
+                jPanel1.setBackground(new Color(90, 166, 190));
+                break;
+            case "Grey":
+                jPanel1.setBackground(Color.gray);
+                break;
+            case "Red":
+                jPanel1.setBackground(Color.red);
+                break;
+            default:
+                jPanel1.setBackground(new Color(90, 166, 190));
+                break;
         }
     }
 
+    void disposeThisWindow() {
+        if (loginPage.FRAME2.isActive()) {
+            loginPage.FRAME2.dispose();
+        } else if (OptionsMenu.FRAME2.isActive()) {
+            OptionsMenu.FRAME2.dispose();
+        }
+    }
 }
