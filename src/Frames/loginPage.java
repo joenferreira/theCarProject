@@ -8,8 +8,10 @@ package Frames;
 import classes.User;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.WindowEvent;
 import java.awt.font.TextAttribute;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -21,6 +23,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import run.Sqlite;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import org.eclipse.persistence.internal.helper.Helper;
 
 /**
  *
@@ -28,7 +33,7 @@ import run.Sqlite;
  */
 public class loginPage extends javax.swing.JFrame {
 
-    public static JFrame FRAME2;
+    static JFrame FRAME2;
     static JFrame frame = new loginPage();
     User newUser;
 
@@ -177,10 +182,10 @@ public class loginPage extends javax.swing.JFrame {
                 if (checkUsername.equals(username)) {
                     String checkPassword = rs.getString(3);
                     if (checkPassword.equals(password)) {
+                        dispose();
                         User user1 = new User(rs.getString(4), rs.getInt(1));
                         FRAME2 = new FirstPage(user1);
                         FRAME2.setVisible(true);
-                        disposeThisFrame();
                         connectLogin.close();
                         return;
                     }
@@ -223,7 +228,6 @@ public class loginPage extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(loginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new loginPage().setVisible(true);
@@ -241,7 +245,7 @@ public class loginPage extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void doOnStart() {
-        
+
         jPanel1.requestFocus(); //Deletes focus on the textfield
         jButton1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); //Cursor when hover login
         newUserLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); //Cursor when hover new user
@@ -282,15 +286,5 @@ public class loginPage extends javax.swing.JFrame {
                 "Wrong username/password.",
                 "Input Error",
                 JOptionPane.ERROR_MESSAGE);
-    }
-
-    private void disposeThisFrame() {
-        if (frame.isActive()) {
-            frame.dispose();
-        } else if (run.Run.FRAME2.isActive()) {
-            run.Run.FRAME2.dispose();
-        } else if (FirstPage.FRAME2.isActive()) {
-            FirstPage.FRAME2.dispose();
-        }
     }
 }

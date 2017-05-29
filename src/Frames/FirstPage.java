@@ -59,9 +59,8 @@ public final class FirstPage extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
         jMenuItem3logout = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -159,22 +158,18 @@ public final class FirstPage extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Saved Cars");
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("User");
-
         jMenuItem3logout.setText("Logout");
         jMenuItem3logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3logoutActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem3logout);
+        jMenu1.add(jMenuItem3logout);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Saved Cars");
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -203,21 +198,24 @@ public final class FirstPage extends javax.swing.JFrame {
         String getNameOnText;
         getNameOnText = jTextField1.getText().trim();
         if (getNameOnText.contains("mercedes")) {
-            System.out.println("It contains the name");
+            dispose();
+            FRAME2 = new Mercedes(newUser);
+            FRAME2.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         //Options Menu
+        dispose();
         FRAME2 = new OptionsMenu(newUser);
         FRAME2.setVisible(true);
-        disposeThisWindow();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3logoutActionPerformed
+        //Logout Menu
+        dispose();
         FRAME2 = new loginPage();
         FRAME2.setVisible(true);
-        disposeThisWindow();
     }//GEN-LAST:event_jMenuItem3logoutActionPerformed
 
     /**
@@ -262,7 +260,6 @@ public final class FirstPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -306,11 +303,4 @@ public final class FirstPage extends javax.swing.JFrame {
         }
     }
 
-    void disposeThisWindow() {
-        if (loginPage.FRAME2.isActive()) {
-            loginPage.FRAME2.dispose();
-        } else if (OptionsMenu.FRAME2.isActive()) {
-            OptionsMenu.FRAME2.dispose();
-        }
-    }
 }

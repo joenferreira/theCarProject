@@ -13,18 +13,19 @@ import javax.swing.JFrame;
  *
  * @author Joen
  */
-public class Run {
+public class Run extends JFrame {
 
     public static JFrame FRAME2;
-    
+
     public static void main(String[] args) throws ClassNotFoundException {
 
-        FRAME2 = new loginPage();
-        FRAME2.setVisible(true);
+        loginPage page = new loginPage();
+        page.setVisible(true);
 
         //initialize database, creates new if it does not exist
         Connection conn = null;
         conn = (new Sqlite().connect());
 
     }
+
 }
