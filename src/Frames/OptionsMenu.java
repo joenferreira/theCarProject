@@ -23,7 +23,7 @@ import run.Sqlite;
  */
 public class OptionsMenu extends javax.swing.JFrame {
 
-    static JFrame frame = new loginPage();
+    static JFrame FRAME2;
     String color = "";
     classes.User newUser = new User("", 0);
 
@@ -141,6 +141,11 @@ public class OptionsMenu extends javax.swing.JFrame {
 
         jMenuItem1.setBackground(new java.awt.Color(204, 204, 204));
         jMenuItem1.setText("Main Menu");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -162,26 +167,34 @@ public class OptionsMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioBlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioBlueActionPerformed
-       blueBackground();
+        blueBackground();
+        goBackMainMenu();
     }//GEN-LAST:event_jRadioBlueActionPerformed
 
     private void jRadioGreyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioGreyActionPerformed
         greyBackground();
+        goBackMainMenu();
     }//GEN-LAST:event_jRadioGreyActionPerformed
 
     private void jRadioRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioRedActionPerformed
         redBackground();
+        goBackMainMenu();
     }//GEN-LAST:event_jRadioRedActionPerformed
 
     private void applyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyButtonActionPerformed
         if (jRadioRed.isSelected()) {
             updateToDatabase("Red");
+
         } else if (jRadioBlue.isSelected()) {
             updateToDatabase("Blue");
         } else if (jRadioGrey.isSelected()) {
             updateToDatabase("Grey");
         }
     }//GEN-LAST:event_applyButtonActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        goBackMainMenu();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,5 +344,11 @@ public class OptionsMenu extends javax.swing.JFrame {
         jRadioRed.setBackground(Color.red);
         jRadioGrey.setBackground(Color.red);
         jRadioBlue.setBackground(Color.red);
+    }
+
+    private void goBackMainMenu() {
+        FRAME2 = new FirstPage(newUser);
+        FRAME2.setVisible(true);
+        FirstPage.FRAME2.dispose();
     }
 }

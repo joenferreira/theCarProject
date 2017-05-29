@@ -22,6 +22,7 @@ import run.Sqlite;
  */
 public final class FirstPage extends javax.swing.JFrame {
     
+    public static JFrame FRAME2;
     classes.User newUser = new User("", 0);
 
     /**
@@ -192,8 +193,8 @@ public final class FirstPage extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         //Options Menu
-        JFrame frame2 = new OptionsMenu(newUser);
-        frame2.setVisible(true);
+        FRAME2 = new OptionsMenu(newUser);
+        FRAME2.setVisible(true);
         loginPage.FRAME2.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
