@@ -162,24 +162,15 @@ public class OptionsMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioBlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioBlueActionPerformed
-        jPanel1.setBackground(new Color(95, 166, 190));
-        jRadioBlue.setBackground(new Color(95, 166, 190));
-        jRadioRed.setBackground(new Color(95, 166, 190));
-        jRadioGrey.setBackground(new Color(95, 166, 190));
+       blueBackground();
     }//GEN-LAST:event_jRadioBlueActionPerformed
 
     private void jRadioGreyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioGreyActionPerformed
-        jPanel1.setBackground(Color.gray);
-        jRadioGrey.setBackground(Color.GRAY);
-        jRadioRed.setBackground(Color.GRAY);
-        jRadioBlue.setBackground(Color.GRAY);
+        greyBackground();
     }//GEN-LAST:event_jRadioGreyActionPerformed
 
     private void jRadioRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioRedActionPerformed
-        jPanel1.setBackground(Color.RED);
-        jRadioRed.setBackground(Color.red);
-        jRadioGrey.setBackground(Color.red);
-        jRadioBlue.setBackground(Color.red);
+        redBackground();
     }//GEN-LAST:event_jRadioRedActionPerformed
 
     private void applyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyButtonActionPerformed
@@ -260,29 +251,17 @@ public class OptionsMenu extends javax.swing.JFrame {
         //if not found
         if (color.equals("")) {
             jRadioBlue.setSelected(true);
-            jPanel1.setBackground(new Color(95, 166, 190));
-            jRadioBlue.setBackground(new Color(95, 166, 190));
-            jRadioRed.setBackground(new Color(95, 166, 190));
-            jRadioGrey.setBackground(new Color(95, 166, 190));
+            blueBackground();
             addToDatabase("Blue");
         } else if (color.equals("Blue")) {
             jRadioBlue.setSelected(true);
-            jPanel1.setBackground(new Color(95, 166, 190));
-            jRadioBlue.setBackground(new Color(95, 166, 190));
-            jRadioRed.setBackground(new Color(95, 166, 190));
-            jRadioGrey.setBackground(new Color(95, 166, 190));
+            blueBackground();
         } else if (color.equals("Grey")) {
             jRadioGrey.setSelected(true);
-            jPanel1.setBackground(Color.gray);
-            jRadioGrey.setBackground(Color.GRAY);
-            jRadioRed.setBackground(Color.GRAY);
-            jRadioBlue.setBackground(Color.GRAY);
+            greyBackground();
         } else if (color.equals("Red")) {
             jRadioRed.setSelected(true);
-            jPanel1.setBackground(Color.RED);
-            jRadioRed.setBackground(Color.red);
-            jRadioGrey.setBackground(Color.red);
-            jRadioBlue.setBackground(Color.red);
+            redBackground();
         }
     }
 
@@ -331,5 +310,26 @@ public class OptionsMenu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(newUserFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    void blueBackground() {
+        jPanel1.setBackground(new Color(95, 166, 190));
+        jRadioBlue.setBackground(new Color(95, 166, 190));
+        jRadioRed.setBackground(new Color(95, 166, 190));
+        jRadioGrey.setBackground(new Color(95, 166, 190));
+    }
+
+    void greyBackground() {
+        jPanel1.setBackground(Color.gray);
+        jRadioGrey.setBackground(Color.GRAY);
+        jRadioRed.setBackground(Color.GRAY);
+        jRadioBlue.setBackground(Color.GRAY);
+    }
+
+    void redBackground() {
+        jPanel1.setBackground(Color.RED);
+        jRadioRed.setBackground(Color.red);
+        jRadioGrey.setBackground(Color.red);
+        jRadioBlue.setBackground(Color.red);
     }
 }
