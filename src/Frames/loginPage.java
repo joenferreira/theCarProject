@@ -8,10 +8,8 @@ package Frames;
 import classes.User;
 import java.awt.Cursor;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.awt.event.WindowEvent;
 import java.awt.font.TextAttribute;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -23,9 +21,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import run.Sqlite;
-import java.awt.Toolkit;
-import java.awt.event.WindowEvent;
-import org.eclipse.persistence.internal.helper.Helper;
 
 /**
  *

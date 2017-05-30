@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import run.Sqlite;
 
 /**
@@ -38,14 +39,15 @@ public final class FirstPage extends javax.swing.JFrame {
     }
 
     private void doThisAtStart() {
+        checkBackgroundColor();
         helloLable.setText("Hello, " + newUser.getName());
+        jButton1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         logoLabel1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         logoLabel2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         logoLabel3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         logoLabel4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         logoLabel5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         logoLabel6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        checkBackgroundColor();
     }
 
     /**
@@ -114,16 +116,46 @@ public final class FirstPage extends javax.swing.JFrame {
         helloLable.setText("Hello");
 
         logoLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_bmw_icon_main_menu.png"))); // NOI18N
+        logoLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoLabel1MouseClicked(evt);
+            }
+        });
 
         logoLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_jaguar_icon_main_menu.png"))); // NOI18N
+        logoLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoLabel2MouseClicked(evt);
+            }
+        });
 
         logoLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_mercedes_icon_main_menu.png"))); // NOI18N
+        logoLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoLabel3MouseClicked(evt);
+            }
+        });
 
         logoLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_porsche_icon_main_menu.png"))); // NOI18N
+        logoLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoLabel4MouseClicked(evt);
+            }
+        });
 
         logoLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volkswagen_main_menu.png"))); // NOI18N
+        logoLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoLabel5MouseClicked(evt);
+            }
+        });
 
         logoLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volvo_icon_main_menu.png"))); // NOI18N
+        logoLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoLabel6MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -186,9 +218,9 @@ public final class FirstPage extends javax.swing.JFrame {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel2)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         jLabel2.getAccessibleContext().setAccessibleDescription("");
@@ -244,6 +276,54 @@ public final class FirstPage extends javax.swing.JFrame {
         FRAME2 = new loginPage();
         FRAME2.setVisible(true);
     }//GEN-LAST:event_jMenuItem3logoutActionPerformed
+
+    private void logoLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoLabel1MouseClicked
+        //BMW model display
+        dispose();
+        Car bmwCar = new Car("BMW", "", "", "", 0, 0);
+        FRAME2 = new carModelDisplay(newUser, bmwCar);
+        FRAME2.setVisible(true);
+    }//GEN-LAST:event_logoLabel1MouseClicked
+
+    private void logoLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoLabel2MouseClicked
+        //Jaguar model display
+        dispose();
+        Car jaguarCar = new Car("Jaguar", "", "", "", 0, 0);
+        FRAME2 = new carModelDisplay(newUser, jaguarCar);
+        FRAME2.setVisible(true);
+    }//GEN-LAST:event_logoLabel2MouseClicked
+
+    private void logoLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoLabel3MouseClicked
+        // Mercedes model display
+        dispose();
+        Car mercedesCar = new Car("Mercedes", "", "", "", 0, 0);
+        FRAME2 = new carModelDisplay(newUser, mercedesCar);
+        FRAME2.setVisible(true);
+    }//GEN-LAST:event_logoLabel3MouseClicked
+
+    private void logoLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoLabel4MouseClicked
+        // Porsche model display
+        dispose();
+        Car porscheCar = new Car("Porsche", "", "", "", 0, 0);
+        FRAME2 = new carModelDisplay(newUser, porscheCar);
+        FRAME2.setVisible(true);
+    }//GEN-LAST:event_logoLabel4MouseClicked
+
+    private void logoLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoLabel5MouseClicked
+        // Volkswagen model display
+        dispose();
+        Car volkswagenCar = new Car("Volkswagen", "", "", "", 0, 0);
+        FRAME2 = new carModelDisplay(newUser, volkswagenCar);
+        FRAME2.setVisible(true);
+    }//GEN-LAST:event_logoLabel5MouseClicked
+
+    private void logoLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoLabel6MouseClicked
+        // Volvo model display
+        dispose();
+        Car volvoCar = new Car("Volvo", "", "", "", 0, 0);
+        FRAME2 = new carModelDisplay(newUser, volvoCar);
+        FRAME2.setVisible(true);
+    }//GEN-LAST:event_logoLabel6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -344,36 +424,41 @@ public final class FirstPage extends javax.swing.JFrame {
             Car newCar = new Car("Mercedes", "", "", "", 0, 0);
             FRAME2 = new carModelDisplay(newUser, newCar);
             FRAME2.setVisible(true);
-        }
-        if (getNameOnText.trim().toLowerCase().contains("bmw")) {
+        } else if (getNameOnText.trim().toLowerCase().contains("bmw")) {
             dispose();
             Car newCar = new Car("BMW", "", "", "", 0, 0);
             FRAME2 = new carModelDisplay(newUser, newCar);
             FRAME2.setVisible(true);
-        }
-        if (getNameOnText.trim().toLowerCase().contains("volvo")) {
+        } else if (getNameOnText.trim().toLowerCase().contains("volvo")) {
             dispose();
             Car newCar = new Car("Volvo", "", "", "", 0, 0);
             FRAME2 = new carModelDisplay(newUser, newCar);
             FRAME2.setVisible(true);
-        }
-        if (getNameOnText.trim().toLowerCase().contains("volkswagen")) {
+        } else if (getNameOnText.trim().toLowerCase().contains("volkswagen")) {
             dispose();
             Car newCar = new Car("Volkswagen", "", "", "", 0, 0);
             FRAME2 = new carModelDisplay(newUser, newCar);
             FRAME2.setVisible(true);
-        }
-        if (getNameOnText.trim().toLowerCase().contains("porsche")) {
+        } else if (getNameOnText.trim().toLowerCase().contains("porsche")) {
             dispose();
             Car newCar = new Car("Porsche", "", "", "", 0, 0);
             FRAME2 = new carModelDisplay(newUser, newCar);
             FRAME2.setVisible(true);
-        }
-        if (getNameOnText.trim().toLowerCase().contains("jaguar")) {
+        } else if (getNameOnText.trim().toLowerCase().contains("jaguar")) {
             dispose();
             Car newCar = new Car("Jaguar", "", "", "", 0, 0);
             FRAME2 = new carModelDisplay(newUser, newCar);
             FRAME2.setVisible(true);
+        } else if (getNameOnText.equals("")) {
+            JOptionPane.showMessageDialog(jPanel1,
+                    "Please input the make first.",
+                    "Input Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(jPanel1,
+                    "Make not found.",
+                    "Input Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

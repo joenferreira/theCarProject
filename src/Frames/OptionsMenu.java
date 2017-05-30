@@ -186,7 +186,6 @@ public class OptionsMenu extends javax.swing.JFrame {
     private void applyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyButtonActionPerformed
         if (jRadioRed.isSelected()) {
             updateToDatabase("Red");
-
         } else if (jRadioBlue.isSelected()) {
             updateToDatabase("Blue");
         } else if (jRadioGrey.isSelected()) {
