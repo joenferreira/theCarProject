@@ -5,6 +5,7 @@
  */
 package Frames;
 
+import classes.Car;
 import classes.User;
 import java.awt.Color;
 import java.sql.Connection;
@@ -122,7 +123,7 @@ public final class FirstPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(helloLable, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(263, 263, 263))
+                .addGap(272, 272, 272))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,31 +178,7 @@ public final class FirstPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //SQL query       
-        Connection conn = null;
-        try {
-            conn = (new Sqlite().connect());
-
-            String SQL = "Select * from car";
-            ResultSet rs = conn.createStatement().executeQuery(SQL);
-
-            while (rs.next()) {
-                System.out.print(rs.getInt(1));
-                System.out.println(rs.getString(2));
-            }
-            conn.close();
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        //end of SQL query 
-        String getNameOnText;
-        getNameOnText = jTextField1.getText().trim();
-        if (getNameOnText.contains("mercedes")) {
-            dispose();
-            FRAME2 = new Mercedes(newUser);
-            FRAME2.setVisible(true);
-        }
+        findCarMake();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -300,6 +277,47 @@ public final class FirstPage extends javax.swing.JFrame {
             default:
                 jPanel1.setBackground(new Color(90, 166, 190));
                 break;
+        }
+    }
+
+    private void findCarMake() {
+        String getNameOnText;
+        getNameOnText = jTextField1.getText().trim();
+        if (getNameOnText.trim().toLowerCase().contains("mercedes")) {
+            dispose();
+            Car newCar = new Car("Mercedes", "", "", "", 0, 0);
+            FRAME2 = new carModelDisplay(newUser, newCar);
+            FRAME2.setVisible(true);
+        }
+        if (getNameOnText.trim().toLowerCase().contains("bmw")) {
+            dispose();
+            Car newCar = new Car("BMW", "", "", "", 0, 0);
+            FRAME2 = new carModelDisplay(newUser, newCar);
+            FRAME2.setVisible(true);
+        }
+        if (getNameOnText.trim().toLowerCase().contains("volvo")) {
+            dispose();
+            Car newCar = new Car("Volvo", "", "", "", 0, 0);
+            FRAME2 = new carModelDisplay(newUser, newCar);
+            FRAME2.setVisible(true);
+        }
+        if (getNameOnText.trim().toLowerCase().contains("volkswagen")) {
+            dispose();
+            Car newCar = new Car("Volkswagen", "", "", "", 0, 0);
+            FRAME2 = new carModelDisplay(newUser, newCar);
+            FRAME2.setVisible(true);
+        }
+        if (getNameOnText.trim().toLowerCase().contains("porsche")) {
+            dispose();
+            Car newCar = new Car("Porsche", "", "", "", 0, 0);
+            FRAME2 = new carModelDisplay(newUser, newCar);
+            FRAME2.setVisible(true);
+        }
+        if (getNameOnText.trim().toLowerCase().contains("jaguar")) {
+            dispose();
+            Car newCar = new Car("Jaguar", "", "", "", 0, 0);
+            FRAME2 = new carModelDisplay(newUser, newCar);
+            FRAME2.setVisible(true);
         }
     }
 

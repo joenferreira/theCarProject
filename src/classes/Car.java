@@ -10,47 +10,56 @@ package classes;
  * @author Joen
  */
 public class Car {
+
     String make;
     String model;
+    String engine;
+    String fuel;
     int year;
-    int mileage;
-    
-    public Car(String makeIn, String modelIn, int yearIn, int mileageIn){
+    int cost;
+
+    public Car(String makeIn, String modelIn, String engineIn, String fuelIn, int yearIn, int costIn) {
         this.make = makeIn;
         this.model = modelIn;
         this.year = yearIn;
-        this.mileage = mileageIn;
+        this.cost = costIn;
+        this.engine = engineIn;
+        this.fuel = fuelIn;
     }
-    
-    void setMake(String newMake){
+
+    void setMake(String newMake) {
         this.make = newMake;
     }
-    
-    void setModel(String newModel){
+
+    void setModel(String newModel) {
         this.model = newModel;
     }
-    
-    void setYear(int newYear){
+
+    void setYear(int newYear) {
         this.year = newYear;
     }
-    
-    void setMileage(int newMileage){
-        this.mileage = newMileage;
-    }
-    
-    String getMake(){
+
+    public String getMake() {
         return this.make;
     }
-    
-    String getModel(){
+
+    public String getEngine() {
+        return this.engine;
+    }
+
+    public String getFuel() {
+        return this.fuel;
+    }
+
+    public String getModel() {
         return this.model;
     }
-    
-    int getYear(){
+
+    public int getYear() {
         return this.year;
     }
-    
-    int getMileage(){
-        return this.mileage;
+
+    public int getCost() {
+        return this.cost;
     }
 }
