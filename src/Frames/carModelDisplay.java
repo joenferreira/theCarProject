@@ -40,6 +40,18 @@ public class carModelDisplay extends javax.swing.JFrame {
     Car volvoV40 = new Car("Volvo", "V40", "D2", "Diesel", 2017, 20000);
     Car volvoS90 = new Car("Volvo", "S90", "D4", "Diesel", 2017, 30000);
     Car volvoXC90 = new Car("Volvo", "XC90", "D5 PowerPulse", "Diesel", 2017, 40000);
+    Car volkswagenGolf = new Car("Volkswagen", "Golf", "R 2.0 TSI", "Diesel", 2017, 10000);
+    Car volkswagenPassat = new Car("Volkswagen", "Passat", "GT 2.0 BITDI", "Diesel", 2017, 20000);
+    Car volkswagenTouareg = new Car("Volkswagen", "Touareg", "SE 3.0 TDI", "Diesel", 2017, 30000);
+    Car volkswagenCC = new Car("Volkswagen", "CC", "GT 2.0 TDI", "Diesel", 2017, 40000);
+    Car porschePanamera = new Car("Porsche", "Panamera", "3.0 L V6", "Diesel", 2017, 10000);
+    Car porsche718 = new Car("Porsche", "718", "3.0 L V6", "Diesel", 2017, 20000);
+    Car porscheMacan = new Car("Porsche", "Macan", "2.0 L 4-cylinder", "Diesel", 2017, 30000);
+    Car porscheCayenne = new Car("Porsche", "Cayenne", "3.6-litre VR6", "Diesel", 2017, 40000);
+    Car jaguarXE = new Car("Jaguar", "XE", "2.0 4 CYLINDER", "Diesel", 2017, 10000);
+    Car jaguarXJ = new Car("Jaguar", "XJ", "3.0 V6 300", "Diesel", 2017, 20000);
+    Car jaguarFPACE = new Car("Jaguar", "F-PACE", "2.0 L 4 CYLINDER", "Diesel", 2017, 30000);
+    Car jaguarFTYPE = new Car("Jaguar", "F-TYPE", "2.0 Litre i4 300PS", "Diesel", 2017, 40000);
 
     /**
      * Creates new form Mercedes
@@ -383,12 +395,62 @@ public class carModelDisplay extends javax.swing.JFrame {
                     + volvoXC90.getModel() + "\nEngine: " + volvoXC90.getEngine() + "\nFuel: "
                     + volvoXC90.getFuel() + "\nYear: " + volvoXC90.getYear() + "\nCost: " + volvoXC90.getCost());
         } //END OF VOLVO MODELS SECTION
+        //VOLKSWAGEN MODELS SECTION
         else if (newCar.getMake().equals("Volkswagen")) {
             logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volkswagen_icon.png")));
-        } else if (newCar.getMake().equals("Porsche")) {
+            carModelLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volkswagen_golf.png")));
+            carModelLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volkswagen_passat.png")));
+            carModelLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volkswagen_touareg.png")));
+            carModelLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volkswagen_cc.png")));
+            jTextArea1.setText("Make: " + volkswagenGolf.getMake() + "\nModel: "
+                    + volkswagenGolf.getModel() + "\nEngine: " + volkswagenGolf.getEngine() + "\nFuel: "
+                    + volkswagenGolf.getFuel() + "\nYear: " + volkswagenGolf.getYear() + "\nCost: " + volkswagenGolf.getCost());
+            jTextArea2.setText("Make: " + volkswagenPassat.getMake() + "\nModel: "
+                    + volkswagenPassat.getModel() + "\nEngine: " + volkswagenPassat.getEngine() + "\nFuel: "
+                    + volkswagenPassat.getFuel() + "\nYear: " + volkswagenPassat.getYear() + "\nCost: " + volkswagenPassat.getCost());
+            jTextArea3.setText("Make: " + volkswagenTouareg.getMake() + "\nModel: "
+                    + volkswagenTouareg.getModel() + "\nEngine: " + volkswagenTouareg.getEngine() + "\nFuel: "
+                    + volkswagenTouareg.getFuel() + "\nYear: " + volkswagenTouareg.getYear() + "\nCost: " + volkswagenTouareg.getCost());
+            jTextArea4.setText("Make: " + volkswagenCC.getMake() + "\nModel: "
+                    + volkswagenCC.getModel() + "\nEngine: " + volkswagenCC.getEngine() + "\nFuel: "
+                    + volkswagenCC.getFuel() + "\nYear: " + volkswagenCC.getYear() + "\nCost: " + volkswagenCC.getCost());
+        } //END OF VOLKSWAGEN MODEL SECTION
+        else if (newCar.getMake().equals("Porsche")) {
             logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_porsche_icon.png")));
+            carModelLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_porsche_718.png")));
+            carModelLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_porsche_panamera.png")));
+            carModelLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_porsche_macan.png")));
+            carModelLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_porsche_cayenne.png")));
+            jTextArea1.setText("Make: " + porsche718.getMake() + "\nModel: "
+                    + porsche718.getModel() + "\nEngine: " + porsche718.getEngine() + "\nFuel: "
+                    + porsche718.getFuel() + "\nYear: " + porsche718.getYear() + "\nCost: " + porsche718.getCost());
+            jTextArea2.setText("Make: " + porschePanamera.getMake() + "\nModel: "
+                    + porschePanamera.getModel() + "\nEngine: " + porschePanamera.getEngine() + "\nFuel: "
+                    + porschePanamera.getFuel() + "\nYear: " + porschePanamera.getYear() + "\nCost: " + porschePanamera.getCost());
+            jTextArea3.setText("Make: " + porscheMacan.getMake() + "\nModel: "
+                    + porscheMacan.getModel() + "\nEngine: " + porscheMacan.getEngine() + "\nFuel: "
+                    + porscheMacan.getFuel() + "\nYear: " + porscheMacan.getYear() + "\nCost: " + porscheMacan.getCost());
+            jTextArea4.setText("Make: " + porscheCayenne.getMake() + "\nModel: "
+                    + porscheCayenne.getModel() + "\nEngine: " + porscheCayenne.getEngine() + "\nFuel: "
+                    + porscheCayenne.getFuel() + "\nYear: " + porscheCayenne.getYear() + "\nCost: " + porscheCayenne.getCost());
         } else if (newCar.getMake().equals("Jaguar")) {
             logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_jaguar_icon.png")));
+            carModelLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_jaguar_xe.png")));
+            carModelLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_jaguar_xf.png")));
+            carModelLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_jaguar_fpace.png")));
+            carModelLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_jaguar_ftype.png")));
+            jTextArea1.setText("Make: " + jaguarXE.getMake() + "\nModel: "
+                    + jaguarXE.getModel() + "\nEngine: " + jaguarXE.getEngine() + "\nFuel: "
+                    + jaguarXE.getFuel() + "\nYear: " + jaguarXE.getYear() + "\nCost: " + jaguarXE.getCost());
+            jTextArea2.setText("Make: " + jaguarXJ.getMake() + "\nModel: "
+                    + jaguarXJ.getModel() + "\nEngine: " + jaguarXJ.getEngine() + "\nFuel: "
+                    + jaguarXJ.getFuel() + "\nYear: " + jaguarXJ.getYear() + "\nCost: " + jaguarXJ.getCost());
+            jTextArea3.setText("Make: " + jaguarFPACE.getMake() + "\nModel: "
+                    + jaguarFPACE.getModel() + "\nEngine: " + jaguarFPACE.getEngine() + "\nFuel: "
+                    + jaguarFPACE.getFuel() + "\nYear: " + jaguarFPACE.getYear() + "\nCost: " + jaguarFPACE.getCost());
+            jTextArea4.setText("Make: " + jaguarFTYPE.getMake() + "\nModel: "
+                    + jaguarFTYPE.getModel() + "\nEngine: " + jaguarFTYPE.getEngine() + "\nFuel: "
+                    + jaguarFTYPE.getFuel() + "\nYear: " + jaguarFTYPE.getYear() + "\nCost: " + jaguarFTYPE.getCost());
         }
     }
 
