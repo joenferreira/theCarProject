@@ -77,6 +77,7 @@ public class carModelDisplay extends javax.swing.JFrame {
         carModelLabel2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         carModelLabel3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         carModelLabel4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jLabel1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -99,9 +100,11 @@ public class carModelDisplay extends javax.swing.JFrame {
         jTextArea3 = new javax.swing.JTextArea();
         jTextArea2 = new javax.swing.JTextArea();
         descriptionLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 200));
@@ -111,97 +114,74 @@ public class carModelDisplay extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(95, 166, 190));
         jPanel1.setPreferredSize(new java.awt.Dimension(720, 440));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 24, 150, 130));
+
+        carModelLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                carModelLabel1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(carModelLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 191, 125, 108));
+
+        carModelLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                carModelLabel2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(carModelLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 191, 125, 108));
+
+        carModelLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                carModelLabel3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(carModelLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 314, 125, 106));
+
+        carModelLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                carModelLabel4MouseClicked(evt);
+            }
+        });
+        jPanel1.add(carModelLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 314, 125, 106));
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jTextArea1.setRows(5);
         jTextArea1.setFocusable(false);
         jTextArea1.setRequestFocusEnabled(false);
+        jPanel1.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 204, 150, 95));
 
         jTextArea4.setColumns(20);
         jTextArea4.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jTextArea4.setRows(5);
         jTextArea4.setFocusable(false);
+        jPanel1.add(jTextArea4, new org.netbeans.lib.awtextra.AbsoluteConstraints(533, 325, 150, 95));
 
         jTextArea3.setColumns(20);
         jTextArea3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jTextArea3.setRows(5);
         jTextArea3.setBorder(null);
         jTextArea3.setFocusable(false);
+        jPanel1.add(jTextArea3, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 325, 150, 95));
 
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jTextArea2.setRows(5);
         jTextArea2.setFocusable(false);
+        jPanel1.add(jTextArea2, new org.netbeans.lib.awtextra.AbsoluteConstraints(533, 196, 150, 95));
 
         descriptionLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         descriptionLabel.setText("Click on a vehicle to proceed...");
+        jPanel1.add(descriptionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 444, 268, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(carModelLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextArea3, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(carModelLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(carModelLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextArea4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(carModelLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(descriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addComponent(jTextArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(carModelLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(carModelLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(carModelLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(carModelLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextArea3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextArea4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addComponent(descriptionLabel)
-                .addContainerGap())
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_back_icon.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 470));
 
@@ -217,6 +197,15 @@ public class carModelDisplay extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem2.setText("Logout");
+        jMenuItem2.setActionCommand("");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -225,10 +214,94 @@ public class carModelDisplay extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        dispose();
         FRAME2 = new FirstPage(newUser);
         FRAME2.setVisible(true);
-        disposeThisWindow();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void carModelLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carModelLabel1MouseClicked
+        dispose();
+        if (newCar.getMake().equals("Mercedes")) {
+            FRAME2 = new buyFrame(newUser, mercedesAclass);
+        } else if (newCar.getMake().equals("BMW")) {
+            FRAME2 = new buyFrame(newUser, BMWmodel1);
+        } else if (newCar.getMake().equals("Jaguar")) {
+            FRAME2 = new buyFrame(newUser, jaguarXE);
+        } else if (newCar.getMake().equals("Porsche")) {
+            FRAME2 = new buyFrame(newUser, porsche718);
+        } else if (newCar.getMake().equals("Volkswagen")) {
+            FRAME2 = new buyFrame(newUser, volkswagenGolf);
+        } else if (newCar.getMake().equals("Volvo")) {
+            FRAME2 = new buyFrame(newUser, volvoV40);
+        }
+        FRAME2.setVisible(true);
+    }//GEN-LAST:event_carModelLabel1MouseClicked
+
+    private void carModelLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carModelLabel2MouseClicked
+        dispose();
+        if (newCar.getMake().equals("Mercedes")) {
+            FRAME2 = new buyFrame(newUser, mercedesCclass);
+        } else if (newCar.getMake().equals("BMW")) {
+            FRAME2 = new buyFrame(newUser, BMWmodel3);
+        } else if (newCar.getMake().equals("Jaguar")) {
+            FRAME2 = new buyFrame(newUser, jaguarXJ);
+        } else if (newCar.getMake().equals("Porsche")) {
+            FRAME2 = new buyFrame(newUser, porschePanamera);
+        } else if (newCar.getMake().equals("Volkswagen")) {
+            FRAME2 = new buyFrame(newUser, volkswagenPassat);
+        } else if (newCar.getMake().equals("Volvo")) {
+            FRAME2 = new buyFrame(newUser, volvoS60);
+        }
+        FRAME2.setVisible(true);
+    }//GEN-LAST:event_carModelLabel2MouseClicked
+
+    private void carModelLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carModelLabel3MouseClicked
+        dispose();
+        if (newCar.getMake().equals("Mercedes")) {
+            FRAME2 = new buyFrame(newUser, mercedesEclass);
+        } else if (newCar.getMake().equals("BMW")) {
+            FRAME2 = new buyFrame(newUser, BMWmodel5);
+        } else if (newCar.getMake().equals("Jaguar")) {
+            FRAME2 = new buyFrame(newUser, jaguarFPACE);
+        } else if (newCar.getMake().equals("Porsche")) {
+            FRAME2 = new buyFrame(newUser, porscheMacan);
+        } else if (newCar.getMake().equals("Volkswagen")) {
+            FRAME2 = new buyFrame(newUser, volkswagenTouareg);
+        } else if (newCar.getMake().equals("Volvo")) {
+            FRAME2 = new buyFrame(newUser, volvoS90);
+        }
+        FRAME2.setVisible(true);
+    }//GEN-LAST:event_carModelLabel3MouseClicked
+
+    private void carModelLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carModelLabel4MouseClicked
+        dispose();
+        if (newCar.getMake().equals("Mercedes")) {
+            FRAME2 = new buyFrame(newUser, mercedesSclass);
+        } else if (newCar.getMake().equals("BMW")) {
+            FRAME2 = new buyFrame(newUser, BMWmodel7);
+        } else if (newCar.getMake().equals("Jaguar")) {
+            FRAME2 = new buyFrame(newUser, jaguarFTYPE);
+        } else if (newCar.getMake().equals("Porsche")) {
+            FRAME2 = new buyFrame(newUser, porscheCayenne);
+        } else if (newCar.getMake().equals("Volkswagen")) {
+            FRAME2 = new buyFrame(newUser, volkswagenCC);
+        } else if (newCar.getMake().equals("Volvo")) {
+            FRAME2 = new buyFrame(newUser, volvoXC90);
+        }
+        FRAME2.setVisible(true);
+    }//GEN-LAST:event_carModelLabel4MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        dispose();
+        FRAME2 = new FirstPage(newUser);
+        FRAME2.setVisible(true);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        dispose();
+        FRAME2 = new loginPage();
+        FRAME2.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,19 +386,17 @@ public class carModelDisplay extends javax.swing.JFrame {
         background = color;
     }
 
-    void disposeThisWindow() {
-        FirstPage.FRAME2.dispose();
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel carModelLabel1;
     private javax.swing.JLabel carModelLabel2;
     private javax.swing.JLabel carModelLabel3;
     private javax.swing.JLabel carModelLabel4;
     private javax.swing.JLabel descriptionLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
