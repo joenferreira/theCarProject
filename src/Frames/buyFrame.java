@@ -72,12 +72,12 @@ public class buyFrame extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 153, 0));
         jButton1.setText("Buy");
         jButton1.setFocusable(false);
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 370, 115, 60));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 115, 60));
 
         jButton2.setBackground(new java.awt.Color(255, 153, 0));
         jButton2.setText("Save");
         jButton2.setFocusable(false);
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 115, 60));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 115, 60));
         jPanel1.add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 20, 150, 130));
         jPanel1.add(carModelLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 190, 73, 66));
         jPanel1.add(carModelLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 190, 73, 66));
