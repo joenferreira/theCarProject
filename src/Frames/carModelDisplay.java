@@ -122,7 +122,7 @@ public class carModelDisplay extends javax.swing.JFrame {
                 carModelLabel1MouseClicked(evt);
             }
         });
-        jPanel1.add(carModelLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 191, 125, 108));
+        jPanel1.add(carModelLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 125, 108));
 
         carModelLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -136,7 +136,7 @@ public class carModelDisplay extends javax.swing.JFrame {
                 carModelLabel3MouseClicked(evt);
             }
         });
-        jPanel1.add(carModelLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 314, 125, 106));
+        jPanel1.add(carModelLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 125, 106));
 
         carModelLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -150,7 +150,7 @@ public class carModelDisplay extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jTextArea1.setFocusable(false);
         jTextArea1.setRequestFocusEnabled(false);
-        jPanel1.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 204, 150, 95));
+        jPanel1.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 150, 95));
 
         jTextArea4.setColumns(20);
         jTextArea4.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
@@ -163,7 +163,7 @@ public class carModelDisplay extends javax.swing.JFrame {
         jTextArea3.setRows(5);
         jTextArea3.setBorder(null);
         jTextArea3.setFocusable(false);
-        jPanel1.add(jTextArea3, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 325, 150, 95));
+        jPanel1.add(jTextArea3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 150, 95));
 
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
