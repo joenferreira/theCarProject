@@ -400,17 +400,13 @@ public class buyFrame extends javax.swing.JFrame {
                 logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_bmw_icon.png")));
                 switch (newCar.getModel()) {
                     case "Model 1":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_bmw_model1_big.png")));
-                        break;
+                        return "https://www.bmw.co.uk/en_GB/new-vehicles/1.html";
                     case "Model 3":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_bmw_model3_big.png")));
-                        break;
+                        return "https://www.bmw.co.uk/en_GB/new-vehicles/3.html";
                     case "Model 5":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_bmw_model5_big.png")));
-                        break;
+                        return "https://www.bmw.co.uk/en_GB/new-vehicles/5.html";
                     case "Model 7":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_bmw_model7_big.png")));
-                        break;
+                        return "https://www.bmw.co.uk/en_GB/new-vehicles/7.html";
                     default:
                         break;
                 }
@@ -420,17 +416,13 @@ public class buyFrame extends javax.swing.JFrame {
                 logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volvo_icon.png")));
                 switch (newCar.getModel()) {
                     case "V40":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volvo_v40_big.png")));
-                        break;
+                        return "http://www.volvocars.com/uk/cars/new-models/v40";
                     case "S60":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volvo_s60_big.png")));
-                        break;
+                        return "http://www.volvocars.com/uk/cars/new-models/s60";
                     case "S90":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volvo_s90_big.png")));
-                        break;
+                        return "http://www.volvocars.com/uk/cars/new-models/s90";
                     case "XC90":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volvo_xc90_big.png")));
-                        break;
+                        return "http://www.volvocars.com/uk/cars/new-models/xc90";
                     default:
                         break;
                 }
@@ -440,17 +432,13 @@ public class buyFrame extends javax.swing.JFrame {
                 logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volkswagen_icon.png")));
                 switch (newCar.getModel()) {
                     case "Golf":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volkswagen_golf_big.png")));
-                        break;
+                        return "http://www.volkswagen.co.uk/new/golf-vii-pa/home";
                     case "Passat":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volkswagen_passat_big.png")));
-                        break;
+                        return "http://www.volkswagen.co.uk/new/passat-viii/home";
                     case "Touareg":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volkswagen_touareg_big.png")));
-                        break;
+                        return "http://www.volkswagen.co.uk/new/touareg-fl/home";
                     case "CC":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volkswagen_cc_big.png")));
-                        break;
+                        return "http://www.volkswagen.co.uk/new/volkswagen-cc-fl/home";
                     default:
                         break;
                 }
@@ -459,17 +447,13 @@ public class buyFrame extends javax.swing.JFrame {
                 logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_porsche_icon.png")));
                 switch (newCar.getModel()) {
                     case "718":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_porsche_718_big.png")));
-                        break;
+                        return "http://www.porsche.com/uk/models/718/";
                     case "Panamera":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_porsche_panamera_big.png")));
-                        break;
+                        return "http://www.porsche.com/uk/models/panamera/";
                     case "Macan":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_porsche_macan_big.png")));
-                        break;
+                        return "http://www.porsche.com/uk/models/macan/";
                     case "Cayenne":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_porsche_cayenne_big.png")));
-                        break;
+                        return "http://www.porsche.com/uk/models/cayenne/";
                     default:
                         break;
                 }
@@ -478,17 +462,13 @@ public class buyFrame extends javax.swing.JFrame {
                 logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_jaguar_icon.png")));
                 switch (newCar.getModel()) {
                     case "XE":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_jaguar_xe_big.png")));
-                        break;
+                        return "https://www.jaguar.co.uk/jaguar-range/xe/index.html";
                     case "XJ":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_jaguar_xf_big.png")));
-                        break;
+                        return "https://www.jaguar.co.uk/jaguar-range/xj/index.html";
                     case "F-PACE":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_jaguar_fpace_big.png")));
-                        break;
+                        return "https://www.jaguar.co.uk/jaguar-range/f-pace/index.html";
                     case "F-TYPE":
-                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_jaguar_ftype_big.png")));
-                        break;
+                        return "https://www.jaguar.co.uk/jaguar-range/f-type/index.html";
                     default:
                         break;
                 }
