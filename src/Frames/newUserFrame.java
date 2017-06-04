@@ -5,17 +5,13 @@
  */
 package Frames;
 
-import static Frames.loginPage.frame;
 import java.awt.Cursor;
-import java.awt.Font;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.awt.font.TextAttribute;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -29,6 +25,7 @@ import run.Sqlite;
  */
 public class newUserFrame extends javax.swing.JFrame {
 
+    String username = "";
     static JFrame frame = new newUserFrame();
 
     /**
@@ -149,18 +146,18 @@ public class newUserFrame extends javax.swing.JFrame {
         String sql = "insert into user(username, password, name) values(?,?,?)";
         PreparedStatement state = null;
         try {
-            System.out.println("Doing this.");
+            username = userNameText.getText();
             state = conn.prepareStatement(sql);
-            state.setString(1, userNameText.getText());
+            state.setString(1, username);
             state.setString(2, jPasswordField1.getText());
             state.setString(3, newName.getText());
 
             usernameCreated();
             frame.dispose();
             state.execute();
-
             state.close();
             conn.close();
+            createBackground();
         } catch (SQLException ex) {
             Logger.getLogger(newUserFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -305,5 +302,57 @@ public class newUserFrame extends javax.swing.JFrame {
                 "Username created!",
                 "Success",
                 JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void createBackground() {
+        int userID = getThisUserID();
+        
+        Connection conn = null;
+        try {
+            conn = (new Sqlite().connect());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(newUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String sql = "insert into options(user_id, color) values(?,?)";
+        PreparedStatement state = null;
+        try {
+            state = conn.prepareStatement(sql);
+            state.setInt(1, userID);
+            state.setString(2, "Blue");
+
+            state.execute();
+
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(newUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private int getThisUserID() {
+        int getID = 0;
+        Connection connectLogin = null;
+
+        try {
+            connectLogin = (new Sqlite().connect());
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(loginPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String SQL = "Select * from user ";
+        try {
+            ResultSet rs = connectLogin.createStatement().executeQuery(SQL);
+            while (rs.next()) {
+                if (rs.getString(2).equals(username)) {
+                    getID = rs.getInt(1);
+                }
+            }
+            connectLogin.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(loginPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return getID;
     }
 }

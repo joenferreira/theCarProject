@@ -333,7 +333,12 @@ public final class FirstPage extends javax.swing.JFrame {
     }//GEN-LAST:event_logoLabel6MouseClicked
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TO DO SAVED CARS
+        if (findCars()) {
+            dispose();
+            JFrame frame = new SavedCars(newUser);
+            frame.setVisible(true);
+        }
+        else noSavedCar();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
@@ -472,6 +477,37 @@ public final class FirstPage extends javax.swing.JFrame {
                     "Input Error",
                     JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private boolean findCars() {
+
+        Connection conn = null;
+
+        try {
+            conn = (new Sqlite().connect());
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(loginPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String SQL = "Select * from car WHERE user_id = " + newUser.getId();
+        try {
+            ResultSet rs = conn.createStatement().executeQuery(SQL);
+            while (rs.next()) {
+                conn.close();
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(loginPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    private void noSavedCar() {
+        JOptionPane.showMessageDialog(jPanel1,
+                "You have no saved cars!",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
     }
 
 }

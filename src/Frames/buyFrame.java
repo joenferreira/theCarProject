@@ -5,13 +5,25 @@
  */
 package Frames;
 
+import static Frames.loginPage.FRAME2;
+import static Frames.newUserFrame.frame;
 import classes.Car;
 import classes.User;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import run.Sqlite;
 
 /**
  *
@@ -19,6 +31,7 @@ import javax.swing.JFrame;
  */
 public class buyFrame extends javax.swing.JFrame {
 
+    String background = "";
     User newUser = new User("", 0);
     Car newCar = new Car("", "", "", "", 0, 0);
 
@@ -85,6 +98,11 @@ public class buyFrame extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(255, 153, 0));
         jButton2.setText("Save");
         jButton2.setFocusable(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 115, 60));
         jPanel1.add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 20, 150, 130));
         jPanel1.add(carModelLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 190, 73, 66));
@@ -168,7 +186,16 @@ public class buyFrame extends javax.swing.JFrame {
         openWebpage(URI.create(checkModelForWebPage(newCar)));
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            saveThisCar();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(buyFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private void doItOnStart() {
+        checkBackgroundColor();
         findMake();
         setDescriptions();
         jLabel2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -378,11 +405,11 @@ public class buyFrame extends javax.swing.JFrame {
     }
 
     String checkModelForWebPage(Car car) {
-        switch (newCar.getMake()) {
+        switch (car.getMake()) {
             //END OF MERCEDES MODELS SECTION
             case "Mercedes":
                 logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_mercedes_icon.png")));
-                switch (newCar.getModel()) {
+                switch (car.getModel()) {
                     case "A class":
                         return "http://www.mercedes-benz.co.uk/content/unitedkingdom/mpc/mpc_unitedkingdom_website/en/home_mpc/passengercars/home/new_cars/models/a-class/a-class.html";
                     case "C class":
@@ -398,7 +425,7 @@ public class buyFrame extends javax.swing.JFrame {
             //END OF BMW MODELS SECTION
             case "BMW":
                 logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_bmw_icon.png")));
-                switch (newCar.getModel()) {
+                switch (car.getModel()) {
                     case "Model 1":
                         return "https://www.bmw.co.uk/en_GB/new-vehicles/1.html";
                     case "Model 3":
@@ -414,7 +441,7 @@ public class buyFrame extends javax.swing.JFrame {
             //END OF VOLVO MODELS SECTION
             case "Volvo":
                 logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volvo_icon.png")));
-                switch (newCar.getModel()) {
+                switch (car.getModel()) {
                     case "V40":
                         return "http://www.volvocars.com/uk/cars/new-models/v40";
                     case "S60":
@@ -430,7 +457,7 @@ public class buyFrame extends javax.swing.JFrame {
             //END OF VOLKSWAGEN MODEL SECTION
             case "Volkswagen":
                 logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_volkswagen_icon.png")));
-                switch (newCar.getModel()) {
+                switch (car.getModel()) {
                     case "Golf":
                         return "http://www.volkswagen.co.uk/new/golf-vii-pa/home";
                     case "Passat":
@@ -445,7 +472,7 @@ public class buyFrame extends javax.swing.JFrame {
                 break;
             case "Porsche":
                 logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_porsche_icon.png")));
-                switch (newCar.getModel()) {
+                switch (car.getModel()) {
                     case "718":
                         return "http://www.porsche.com/uk/models/718/";
                     case "Panamera":
@@ -460,7 +487,7 @@ public class buyFrame extends javax.swing.JFrame {
                 break;
             case "Jaguar":
                 logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsz_jaguar_icon.png")));
-                switch (newCar.getModel()) {
+                switch (car.getModel()) {
                     case "XE":
                         return "https://www.jaguar.co.uk/jaguar-range/xe/index.html";
                     case "XJ":
@@ -479,4 +506,140 @@ public class buyFrame extends javax.swing.JFrame {
         return null;
     }
 
+    private void checkBackgroundColor() {
+
+        String color = "";
+        Connection conn = null;
+        try {
+            conn = (new Sqlite().connect());
+
+            String SQL = "Select * from options WHERE user_id =" + newUser.getId();
+            try (ResultSet rs = conn.createStatement().executeQuery(SQL)) {
+                while (rs.next()) {
+                    color = rs.getString(3);
+                }
+                conn.close();
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(FirstPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        switch (color) {
+            case "Blue":
+                jPanel1.setBackground(new Color(90, 166, 190));
+                break;
+            case "Grey":
+                jPanel1.setBackground(Color.gray);
+                break;
+            case "Red":
+                jPanel1.setBackground(Color.red);
+                break;
+            default:
+                jPanel1.setBackground(new Color(90, 166, 190));
+                break;
+        }
+
+        background = color;
+    }
+
+    private void saveThisCar() throws ClassNotFoundException {
+
+        if (checkIfExists()) {
+            return;
+        }
+
+        Connection conn = null;
+
+        try {
+            conn = (new Sqlite().connect());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(newUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String sql = "insert into car(user_id, make, model, engine, fuel, year, cost) values(?,?,?,?,?,?,?)";
+        PreparedStatement state = null;
+        try {
+            state = conn.prepareStatement(sql);
+            state.setInt(1, newUser.getId());
+            state.setString(2, newCar.getMake());
+            state.setString(3, newCar.getModel());
+            state.setString(4, newCar.getEngine());
+            state.setString(5, newCar.getFuel());
+            state.setInt(6, newCar.getYear());
+            state.setInt(7, newCar.getCost());
+
+            carCreated();
+            state.execute();
+
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(newUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void carCreated() {
+        JOptionPane.showMessageDialog(jPanel1,
+                "Car Saved!",
+                "Success",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private boolean checkIfExists() throws ClassNotFoundException {
+
+        Connection conn = null;
+
+        try {
+            conn = (new Sqlite().connect());
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(loginPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String SQL = "Select * from car";
+        try {
+            ResultSet rs = conn.createStatement().executeQuery(SQL);
+            while (rs.next()) {
+                if (rs.getInt(2) == newUser.getId()) {
+                    conn.close();
+                    if (okcancel("You already have a car saved do you wish to replace it?") == 0) {
+                        deleteCar();
+                        return false;
+                    }
+                    return true;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(loginPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public static int okcancel(String theMessage) {
+        int result = JOptionPane.showConfirmDialog((Component) null, theMessage,
+                "alert", JOptionPane.OK_CANCEL_OPTION);
+        return result;
+    }
+
+    private void deleteCar() throws ClassNotFoundException {
+
+        Connection conn = null;
+
+        try {
+            conn = (new Sqlite().connect());
+
+            String sql = "DELETE FROM car WHERE user_id= ?";
+            try (PreparedStatement state = conn.prepareStatement(sql)) {
+                state.setInt(1, newUser.getId());
+                state.executeUpdate();
+            }
+            conn.close();
+
+        } catch (SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+
+        }
+
+    }
 }
