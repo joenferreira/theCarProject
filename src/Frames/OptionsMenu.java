@@ -7,6 +7,8 @@ package Frames;
 
 import classes.User;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +16,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import run.Sqlite;
 
 /**
@@ -28,6 +31,7 @@ public class OptionsMenu extends javax.swing.JFrame {
 
     /**
      * Creates new form OptionsMenu
+     *
      * @param newUserIn
      */
     public OptionsMenu(classes.User newUserIn) {
@@ -52,6 +56,7 @@ public class OptionsMenu extends javax.swing.JFrame {
         jRadioBlue = new javax.swing.JRadioButton();
         jRadioRed = new javax.swing.JRadioButton();
         applyButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -104,6 +109,14 @@ public class OptionsMenu extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(204, 0, 51));
+        jButton1.setText("Deactivate your account");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -121,8 +134,13 @@ public class OptionsMenu extends javax.swing.JFrame {
                 .addComponent(jRadioRed)
                 .addGap(0, 197, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(302, 302, 302)
-                .addComponent(applyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(302, 302, 302)
+                        .addComponent(applyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -137,7 +155,9 @@ public class OptionsMenu extends javax.swing.JFrame {
                     .addComponent(jRadioRed))
                 .addGap(38, 38, 38)
                 .addComponent(applyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(204, 204, 204));
@@ -198,6 +218,19 @@ public class OptionsMenu extends javax.swing.JFrame {
         goBackMainMenu();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            if (confirmYouWantDelete("Are you sure you want to delete your account?") == 0) {
+                deleteAccount();
+                dispose();
+                JFrame frame = new loginPage();
+                frame.setVisible(true);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(OptionsMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -234,6 +267,7 @@ public class OptionsMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton applyButton;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
@@ -245,6 +279,9 @@ public class OptionsMenu extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void doOnStart() {
+        jButton1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        applyButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
         Connection conn = null;
         try {
             conn = (new Sqlite().connect());
@@ -356,5 +393,30 @@ public class OptionsMenu extends javax.swing.JFrame {
         FRAME2 = new FirstPage(newUser);
         FRAME2.setVisible(true);
         FirstPage.FRAME2.dispose();
+    }
+
+    private void deleteAccount() throws ClassNotFoundException {
+        Connection conn = null;
+
+        try {
+            conn = (new Sqlite().connect());
+
+            String sql = "DELETE FROM user WHERE user_id= ?";
+            try (PreparedStatement state = conn.prepareStatement(sql)) {
+                state.setInt(1, newUser.getId());
+                state.executeUpdate();
+            }
+            conn.close();
+
+        } catch (SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+
+        }
+    }
+
+    public int confirmYouWantDelete(String theMessage) {
+        int result = JOptionPane.showConfirmDialog((Component) null, theMessage,
+                "alert", JOptionPane.OK_CANCEL_OPTION);
+        return result;
     }
 }
