@@ -505,7 +505,7 @@ public final class FirstPage extends javax.swing.JFrame {
 
     private void noSavedCar() {
         JOptionPane.showMessageDialog(jPanel1,
-                "You have no saved cars!",
+                "You have no saved cars! :(",
                 "Error",
                 JOptionPane.ERROR_MESSAGE);
     }
